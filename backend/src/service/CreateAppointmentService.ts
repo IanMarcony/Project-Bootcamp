@@ -5,12 +5,12 @@ import Appointment from "../models/Appointment";
 import AppointmentsRespository from "../repositories/AppointmentsRepository";
 
 interface Request {
-  provider: string;
+  provider_id: string;
   date: Date;
 }
 
 export default class CreateAppointmentService {
-  public async execute({ date, provider }: Request): Promise<Appointment> {
+  public async execute({ date, provider_id }: Request): Promise<Appointment> {
     const appointmentsRepository = getCustomRepository(AppointmentsRespository);
 
     const appointmentDate = startOfHour(date);
@@ -20,11 +20,11 @@ export default class CreateAppointmentService {
     );
 
     if (findAppointmentInSameDate) {
-      throw Error("This appointment is already booked");
+      throw new Error("This appointment is already booked");
     }
 
     const appointment = appointmentsRepository.create({
-      provider,
+      provider_id,
       date: appointmentDate,
     });
 
