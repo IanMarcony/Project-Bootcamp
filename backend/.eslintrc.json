@@ -20,7 +20,8 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "class-methods-use-this": "",
+    "prettier/prettier": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
