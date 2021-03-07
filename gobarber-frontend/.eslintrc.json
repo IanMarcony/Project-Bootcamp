@@ -26,6 +26,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "camelcase": "off",
+    "react/jsx-props-no-spreading ": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": [
