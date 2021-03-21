@@ -1,10 +1,60 @@
 import React from 'react';
-import { View } from 'react-native';
+import {
+  Image,
+  View,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 
-import { Container } from './styles';
+import logoImg from '../../assets/logo.png';
+
+import { useNavigation } from '@react-navigation/native';
+
+import Icon from 'react-native-vector-icons/Feather';
+
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+
+import {
+  Container,
+  Title,
+  BackToSignInButton,
+  BackToSignInButtonText,
+} from './styles';
 
 const SignUp: React.FC = () => {
-  return <View />;
+  const navigation = useNavigation();
+  return (
+    <>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        enabled
+      >
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ flex: 1 }}
+        >
+          <Container>
+            <Image source={logoImg} />
+            <View>
+              <Title>Crie sua conta</Title>
+            </View>
+            <Input name="name" icon="user" placeholder="Name" />
+            <Input name="email" icon="mail" placeholder="E-mail" />
+            <Input name="password" icon="lock" placeholder="Password" />
+
+            <Button onPress={() => {}}>Entrar</Button>
+          </Container>
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <BackToSignInButton onPress={() => navigation.goBack()}>
+        <Icon name="arrow-left" size={20} color="#fff" />
+        <BackToSignInButtonText>Voltar para logon</BackToSignInButtonText>
+      </BackToSignInButton>
+    </>
+  );
 };
 
 export default SignUp;
