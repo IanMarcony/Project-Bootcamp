@@ -1,11 +1,11 @@
-import { getRepository } from "typeorm";
-import User from "../models/User";
-import path from "path";
-import fs from "fs";
+import { getRepository } from 'typeorm';
+import User from '@modules/users/infra/typeorm/entities/User';
+import path from 'path';
+import fs from 'fs';
 
-import AppError from "../errors/AppError";
+import AppError from '@shared/errors/AppError';
 
-import uploadConfig from "../config/upload";
+import uploadConfig from '@config/upload';
 
 interface Request {
   user_id: string;
@@ -18,7 +18,7 @@ export default class UpdateUserAvatarService {
 
     const user = await usersRepository.findOne(user_id);
     if (!user) {
-      throw new AppError("Only authenticated users can change avatar.", 401);
+      throw new AppError('Only authenticated users can change avatar.', 401);
     }
 
     if (user.avatar) {
