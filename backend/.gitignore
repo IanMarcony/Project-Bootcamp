@@ -3,5 +3,6 @@ build/
 
 tmp/*
 !tmp/.gitkeep
+!tmp/uploads/
 
 temp/
