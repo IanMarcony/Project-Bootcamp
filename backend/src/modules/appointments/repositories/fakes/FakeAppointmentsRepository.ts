@@ -29,4 +29,8 @@ export default class FakeAppointmentsRepository
 
     return appointment;
   }
+
+  findAll(): Appointment[] {
+    return this.appointments;
+  }
 }

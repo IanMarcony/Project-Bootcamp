@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
+import AppointmentsRepository from '../../typeorm/repositories/AppointmentsRepository';
 
 export default class AppointmentsController {
   public async create(req: Request, res: Response): Promise<Response> {
@@ -18,5 +19,13 @@ export default class AppointmentsController {
     });
 
     return res.json(appointment);
+  }
+
+  public async index(req: Request, res: Response): Promise<Response> {
+    const appointmentsRepository = new AppointmentsRepository();
+
+    const appointments = await appointmentsRepository.findAll();
+
+    return res.json(appointments);
   }
 }
