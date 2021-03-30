@@ -4,7 +4,7 @@ import { uuid } from 'uuidv4';
 
 import User from '../../infra/typeorm/entities/User';
 
-export default class UsersRepository implements IUserRepository {
+export default class FakeUsersRepository implements IUserRepository {
   private users: User[] = [];
 
   public async findById(id: string): Promise<User | undefined> {

@@ -33,7 +33,7 @@ describe('AuthenticateUser', () => {
     expect(response).toHaveProperty('token');
   });
   it('should not be able to authenticate with no existing user through email', async () => {
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'fulano2@detal.com',
         password: '123456789',
@@ -41,7 +41,7 @@ describe('AuthenticateUser', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
   it('should not be able to authenticate with wrong password', async () => {
-    expect(
+    await expect(
       authenticateUser.execute({
         email: 'fulano@detal.com',
         password: 'wrong-password',
