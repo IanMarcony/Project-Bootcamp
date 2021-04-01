@@ -30,6 +30,6 @@ export default class UsersRepository implements IUserRepository {
   }
 
   public async update(user: User): Promise<User> {
-    return this.ormRepository.save(user);
+    return await this.ormRepository.save(user);
   }
 }
